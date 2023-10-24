@@ -26,6 +26,8 @@ int main()
 	int num1;
 	int num2;
 	double num3;
+	
+	
 
 	// User enters an integer and program prints it
 	//cout << "Enter an integer: ";
