@@ -86,7 +86,24 @@
  * the variables square_area and rectangle_area by calling the find_area function and passing the appropriate 
  * arguments which are listed below. The square has a side_length of 2. The rectangle has a length of 4.5 and a width of 2.3.
  * 
+ * Exercise 5
+ * In this exercise you will create a program that will be used to print the guest_list to an event and then 
+ * clear the guest_list when the event is over. Begin by completing the function prototypes print_guest_list 
+ * and clear_guest_list which are both passed an array of std::string and a size_t value. Ensure that the 
+ * array cannot be modified within the print_guest_list function by using the keyword const in the parameter list.
+ * Now that the function prototypes have been declared, at the bottom of the file define both functions.
+ * Both the print_guest_list and clear_guest_list functions will be passed the array argument guest_list and 
+ * the size_t argument guest_list_size which have both been provided to you. The print_guest_list function 
+ * should print the values contained within the guest_list from left to right with each element being printed 
+ * on a new line.  Use a for loop to iterate through the array. The clear_guest_list function should replace 
+ * each element of the array with the string value " ", a single space.  Use a for loop to iterate through the array.
+ * Now, from the function body of event_guest_list, make the following function calls in this order:
  * 
+ * print_guest_list
+ * clear_guest_list
+ * print_guest_list
+ *
+ * and passing the array argument guest_list and the size_t argument guest_list_size with each function call.
  * 
  * 
 */
@@ -96,13 +113,18 @@
 #include <cmath>
 using namespace std;
 
-// Ecersie 4 Function Prototypes
+// Exerscise 5 Function Prototypes
+void print_guest_list(const string list[], size_t size);
+void clear_guest_list(string list[], size_t size);
+void event_guest_list();
+
+// Exerscise 4 Function Prototypes
 int find_area(int);
 double find_area(double, double);
 void area_calc();
 
 
-// Ecersie 3 Function Prototypes
+// Exerscise 3 Function Prototypes
 void print_grocery_list(int apples=3, int oranges=7, int mangos=13);
 void modify_grocery_list();
 
@@ -151,7 +173,33 @@ int main()
 	*/
 	area_calc();
 	
+	
+	/*
+	 * Exercise 5 
+	*/
+	event_guest_list();
+	
 	return 0;
+}
+
+void event_guest_list(){
+	string guest_list[] {"Larry", "Moe", "Curly"};
+    size_t guest_list_size {3};
+	
+	print_guest_list(guest_list, guest_list_size);
+	clear_guest_list(guest_list, guest_list_size);
+	print_guest_list(guest_list, guest_list_size);
+}
+
+void print_guest_list(const string list[], size_t size){
+	for(size_t i{0}; i<size; i++){
+		cout << list[i] << endl;
+	}
+}
+void clear_guest_list(string list[], size_t size){
+	for(size_t i{0}; i<size; i++){
+		list[i] = " ";
+	}
 }
 
 void area_calc(){
