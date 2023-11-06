@@ -1,26 +1,26 @@
 #include <iostream>
+#include "Dog.h"
 
 using namespace std;
-
-class Dog{
-
-public:
-	//Atrributes
-	string name;
-	int age;
-};
-
 
 int main()
 {
 	
 	Dog goofy;
-	goofy.name = "Goofy";
-	goofy.age = 12;
+	// goofy.name = "Goofy"; Error, attrs are private
+	//goofy.age = 12;
+	goofy.set_name("Goofy");
+	goofy.set_age(12);
+	
+	cout << "Goofy is " << goofy.get_human_years() << " human years." << endl;
+	goofy.speak();
 	
 	Dog *clifford = new Dog;
-	clifford->name = "Clifford";
-	clifford->age = 7;
+	clifford->set_name("Clifford");
+	clifford->set_age(7);
+	
+	cout << "Clifford is " << clifford->get_human_years() << " human years." << endl;
+	clifford->speak();
 	
 	delete clifford;
 	
