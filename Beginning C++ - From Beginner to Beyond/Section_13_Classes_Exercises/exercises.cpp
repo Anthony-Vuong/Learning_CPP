@@ -5,6 +5,8 @@ using namespace std;
 
 int main()
 {
+	// Initialize with default constructor
+	Dog doug;
 	
 	Dog goofy;
 	// goofy.name = "Goofy"; Error, attrs are private
@@ -22,7 +24,15 @@ int main()
 	cout << "Clifford is " << clifford->get_human_years() << " human years." << endl;
 	clifford->speak();
 	
+	//Using overloaded constructors
+	Dog airbud("Airbud", 6);
+	cout << "New dog named " << airbud.get_name() << " and he is " << airbud.get_age() << endl;
+	
+	Dog *pluto = new Dog("Pluto", 2);
+	cout << pluto->get_name() << " joined the house and he is " << pluto->get_age() << endl;
+	
 	delete clifford;
+	delete pluto;
 	
 	return 0;
 }

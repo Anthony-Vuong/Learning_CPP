@@ -19,6 +19,15 @@ public:
 	int get_human_years();
 	void speak();
 	
+	Dog(){
+		name = "None";
+		age = 0;
+	}
+	Dog(std::string n, int a){
+		name = n;
+		age = a;
+	}
+	
 };
 
 #endif // DOG_H
