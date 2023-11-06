@@ -5,8 +5,11 @@ using namespace std;
 
 int main()
 {
+	
 	// Initialize with default constructor
-	Dog doug;
+	Dog doug{"Doug" , 4};
+	
+	Dog empty{doug};
 	
 	Dog goofy;
 	// goofy.name = "Goofy"; Error, attrs are private
