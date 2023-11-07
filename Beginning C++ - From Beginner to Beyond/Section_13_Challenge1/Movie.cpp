@@ -28,3 +28,13 @@ std::string Movie::get_rating(){
 int Movie::get_watch_count(){
 	return watch_count;
 }
+
+void Movie::increment_watch_count(){
+	watch_count++;
+}
+
+void Movie::list_movie(){
+	std::cout << name << std::endl;
+	std::cout << rating << std::endl;
+	std::cout << watch_count << std::endl;
+}

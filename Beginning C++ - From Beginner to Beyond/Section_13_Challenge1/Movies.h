@@ -9,18 +9,17 @@ class Movies
 //Attributes
 private:
 	std::vector<Movie> movie_collection{};
-	// static members	
-	static unsigned int num_movies;
+	unsigned int num_movies{0};
 	
-
 public:
 	void add_movie(Movie m);
-	void list_movies();
+	void display_movies() const;
+	unsigned int get_num_movies();
+	int find_movie(std::string movie_name);
+	void increment_movie_count(std::string movie_name);
 
 	Movies();
 	~Movies();
-	
-	static unsigned int get_num_movies();
 
 };
 

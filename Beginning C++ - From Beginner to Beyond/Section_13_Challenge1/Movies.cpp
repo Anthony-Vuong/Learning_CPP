@@ -2,12 +2,13 @@
 #include "Movie.h"
 #include <string>
 #include <iostream>
+#include <algorithm>
 
-unsigned int Movies::num_movies{0};
+
 
 Movies::Movies()
 {
-	++num_movies;
+	
 	
 }
 
@@ -15,19 +16,55 @@ Movies::~Movies()
 {
 }
 
-int unsigned Movies::get_num_movies(){
-	return num_movies;
+void Movies::increment_movie_count(std::string movie_name){
+	int found = find_movie(movie_name);
+	if(find_movie(movie_name) != -1){
+		movie_collection.at(found).increment_watch_count();
+	}
+	else{
+		std::cout << "////////////////////////////////////////////////////" << std::endl;
+		std::cout << movie_name << " is NOT in the list!" << std::endl;
+		std::cout << "////////////////////////////////////////////////////" << std::endl;
+	}
 }
+
+
+int Movies::find_movie(std::string movie_name){
+	unsigned int i{0};
+	while(i < get_num_movies()){
+		if(movie_collection.at(i).get_name() == movie_name){
+			return i;
+		}
+		i++;
+	}	
+	return -1;
+}
+
 
 void Movies::add_movie(Movie m){
-	movie_collection.push_back(m);
+	
+	if(find_movie(m.get_name()) != -1){
+		std::cout << "////////////////////////////////////////////////////" << std::endl;
+		std::cout << m.get_name() << " is already in the list!" << std::endl;
+		std::cout << "////////////////////////////////////////////////////" << std::endl;
+		std::cout << std::endl;
+	}
+	else{
+		movie_collection.push_back(m);
+		++num_movies;
+	}
 }
 
-void Movies::list_movies(){
-	for(unsigned int i{0}; i < num_movies; i++){
-		std::cout << movie_collection.at(0).get_name() << std::endl;
-		std::cout << movie_collection.at(0).get_rating() << std::endl;
-		std::cout << movie_collection.at(0).get_watch_count() << std::endl;
+void Movies::display_movies()const{
+	std::cout << "List of Movies" << std::endl;
+	std::cout << "----------------------------------------" << std::endl;
+	for(auto movie:movie_collection){
+		movie.list_movie();
+		std::cout << "----------------------------------------" << std::endl;
 	}
 	std::cout << std::endl;
+}
+
+unsigned int Movies::get_num_movies(){
+	return num_movies;
 }
