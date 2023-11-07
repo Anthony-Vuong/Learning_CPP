@@ -11,7 +11,7 @@ Player::Player(std::string name_val, int health_val, int xp_val)
 	std::cout << "3 arg constructor" << std::endl;
 }
 
-//Constructor
+//Copy Constructor
 Player::Player(const Player &source)
 	:Player(source.name, source.health,source.xp){
 	std::cout << "Copy constructor" << std::endl;

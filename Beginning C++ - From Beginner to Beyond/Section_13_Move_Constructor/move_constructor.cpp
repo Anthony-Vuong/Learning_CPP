@@ -17,8 +17,6 @@ public:
 	Move(int d);
 	//Copy constructor
 	Move(const Move &source);
-	//Move constructor
-	Move(Move &&source);
 	//Destructor
 	~Move();
 	
