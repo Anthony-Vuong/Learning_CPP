@@ -1,8 +1,7 @@
 #ifndef DOG_H
 #define DOG_H
 #include <string>
-
-
+#include <iostream>
 
 class Dog
 {
@@ -18,12 +17,12 @@ public:
 	void set_age(int a);
 	int get_human_years();
 	void speak();
+	// Overloaded constructor
 	Dog(std::string name = "None", int age=0);
+	//Copy constructor
 	Dog(const Dog &source);
 	// Destructor
-	~Dog(){
-		std::cout << name << " object has been destroyed" << std::endl;
-	}
+	~Dog();
 	
 	// No args constructor
 //	Dog(){
@@ -40,17 +39,18 @@ public:
 
 // Delegating constructor
 Dog::Dog(std::string name_val, int age_val)
-:name{name_val}, age{age_val}{
-		std::cout << "Constructor for " << name << std::endl;
+	:name{name_val}, age{age_val}{
+	std::cout << "Constructor for " << name << std::endl;
 }
 
 // Copy Constructor
 Dog::Dog(const Dog &source)
-:Dog{source.name, source.age}{
-		std::cout << "Copy constructor for " << name << std::endl;
+	:Dog{source.name, source.age}{
+	std::cout << "Copy constructor for " << name << std::endl;
 }
 
-
-
+Dog::~Dog(){
+	std::cout << name << " object has been destroyed" << std::endl;
+}
 
 #endif // DOG_H

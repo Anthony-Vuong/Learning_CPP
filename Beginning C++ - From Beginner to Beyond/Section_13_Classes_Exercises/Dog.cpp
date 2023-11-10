@@ -1,6 +1,8 @@
 #include "Dog.h"
 #include <iostream>
 
+
+
 std::string Dog::get_name(){
 	return name;
 }
