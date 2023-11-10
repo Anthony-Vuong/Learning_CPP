@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Account.h"
 
-
 Account::Account()
 	:balance{ 0 }, name{ "Account" } {
 	std::cout << "Account Constructor called" << std::endl;
