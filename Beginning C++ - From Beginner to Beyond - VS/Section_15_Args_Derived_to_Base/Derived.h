@@ -12,14 +12,14 @@ private:
 
 public:
 	Derived()
-		: doubled_value{ 0 } {
+		:Base{}, doubled_value {0} {
 		std::cout << "No-args DERIVED Constructor" << std::endl;
 	}
-	Derived(int x) 
-		: doubled_value{x*2} {
+	Derived(int x)
+		:Base{ x }, doubled_value {x * 2} {
 		std::cout << "1-arg DERIVED Constructor" << std::endl;
 	}
-	~Derived(){
+	~Derived() {
 		std::cout << "DERIVED Destructor" << std::endl;
 	}
 
