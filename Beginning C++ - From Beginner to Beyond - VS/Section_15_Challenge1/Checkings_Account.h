@@ -12,7 +12,6 @@ private:
 	static constexpr double default_flat_fee = 1.50;
 protected:
 	double flat_fee;
-
 public:
 	Checkings_Account(std::string name = default_name, double balance = default_balance, double flat_fee = default_flat_fee);
 	bool deposit(double amount);
