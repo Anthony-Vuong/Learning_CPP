@@ -6,6 +6,14 @@
 
 int main()
 {
+
+
+
+
+
+
+    /* ================================== Overloaded stream operators Tests ================================== */
+
     Mystring larry{"Larry"};
     Mystring moe{"Moe"};
     Mystring curly;
@@ -21,6 +29,8 @@ int main()
     std::cin >> larry >> moe >> curly;
 
     std::cout << "Again, the 3 stooges are: " << larry << ", " << moe << ", and " << curly << std::endl;
+
+    /* ============================ End of Overloaded stream operators Tests ================================== */
 
 
     return 0;
