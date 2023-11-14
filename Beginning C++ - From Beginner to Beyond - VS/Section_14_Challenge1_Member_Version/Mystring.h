@@ -22,16 +22,19 @@ class Mystring
 	friend Mystring operator+(const Mystring& lhs, const Mystring& rhs);			// lowercase operation on string
 
 	// Overloading (+=) operator
-	friend void operator+=(Mystring& lhs, const Mystring& rhs);						// concatenation assignment operation on string
+	friend Mystring& operator+=(Mystring& lhs, const Mystring& rhs);						// concatenation assignment operation on string
 
 	// Overloading (*) operator
 	friend Mystring operator*(const Mystring& lhs, unsigned int multiplier);		// concatenation assignment operation on string
 
 	// Overloading (*=) operator
-	friend void operator*=(Mystring& lhs, unsigned int multiplier);					// concatenation assignment operation on string
+	friend Mystring& operator*=(Mystring& lhs, unsigned int multiplier);					// concatenation assignment operation on string
 
 	// Overloading (++) operator
-	friend Mystring operator++(const Mystring& obj);								// concatenation operation on string
+	friend Mystring &operator++(Mystring& obj);								// concatenation operation on string
+
+	// Overloading (++) operator
+	friend Mystring operator++(Mystring& obj, int n);								// concatenation operation on string
 
 	// Overloading (<<) operator
 	friend std::ostream& operator<<(std::ostream& os, const Mystring& rhs);

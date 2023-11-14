@@ -125,11 +125,12 @@ Mystring operator+(const Mystring& lhs, const Mystring& rhs) {			// concatenatio
 }
 
 // Overloading (+=) operator
-void operator+=(Mystring& lhs, const Mystring& rhs) {			// concatenation operation on string
+Mystring& operator+=(Mystring& lhs, const Mystring& rhs) {			// concatenation operation on string
 	char* buff = new char[std::strlen(lhs.str) + std::strlen(rhs.str) + 1];
 	std::strcpy(buff, lhs.str);
 	std::strcat(buff, rhs.str);
 	lhs.str = buff;
+	return lhs;
 }
 
 // Overloading (*) operator
@@ -145,24 +146,32 @@ Mystring operator*(const Mystring& lhs, unsigned int multiplier) {			// multiply
 }
 
 // Overloading (*=) operator
-void operator*=(Mystring& lhs, unsigned int multiplier) {			// concatenation operation on string
+Mystring& operator*=(Mystring& lhs, unsigned int multiplier) {			// concatenation operation on string
 	char* buff = new char[(multiplier * std::strlen(lhs.str)) + 1];
 	std::strcpy(buff, lhs.str);
 	for (int i{ 0 }; i < multiplier - 1; i++) {
 		std::strcat(buff, lhs.str);
 	}
 	lhs.str = buff;
+	return lhs;
 }
 
 // Overloading (++) operator
-Mystring operator++(const Mystring& obj) {								//  lowercase operation on string
+Mystring &operator++(Mystring& obj) {								//  lowercase operation on string
 	char* buff = new char[std::strlen(obj.str) + 1];
 	std::strcpy(buff, obj.str);
 	for (int i{ 0 }; i < std::strlen(buff); i++) {
 		buff[i] = std::toupper(buff[i]);
 	}
-	Mystring temp{ buff };
-	delete[] buff;
+	obj.str = buff;
+	return obj;
+}
+
+
+// Overloading (++) operator
+Mystring operator++(Mystring& obj, int n) {								//  lowercase operation on string
+	Mystring temp{ obj };
+	++obj;
 	return temp;
 }
 

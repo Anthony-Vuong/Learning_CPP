@@ -113,13 +113,28 @@ int main()
     /* ============================End of Overloaded Multiply Assignment(*) Operator Test =============================== */
 
       /* ================================== Overloaded Post-Increment(++) Operator Test ===============================*/
+    Mystring all_upper{ "SMILE" };
+    all_upper.display();
+    std::cout << "Lower case of " << all_upper << " is " << - all_upper << std::endl;
+
+    
     Mystring all_lower{ "smile" };
 
-    ++all_lower;          // Note: 5 * cat will not work - overloaded operator expects a Mystring object for lhs and an int as rhs
+    ++all_lower;          
+
+    all_lower.display();
+
+    -all_lower;
+
+    all_lower.display();
+
+    all_lower++;          
 
     all_lower.display();
 
     /* ============================End of Overloaded Multiply Assignment(*) Operator Test =============================== */
+
+
 
 
     /* ================================== Overloaded stream operators Tests ================================== 
