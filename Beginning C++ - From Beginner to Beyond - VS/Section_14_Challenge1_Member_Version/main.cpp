@@ -112,7 +112,7 @@ int main()
 
     /* ============================End of Overloaded Multiply Assignment(*) Operator Test =============================== */
 
-      /* ================================== Overloaded Post-Increment(++) Operator Test ===============================*/
+    /* ================================== Overloaded Post-Increment(++) Operator Test ===============================*/
     Mystring all_upper{ "SMILE" };
     all_upper.display();
     std::cout << "Lower case of " << all_upper << " is " << - all_upper << std::endl;
@@ -134,6 +134,28 @@ int main()
 
     /* ============================End of Overloaded Multiply Assignment(*) Operator Test =============================== */
 
+    /* ================================== Overloaded Post-Increment(++) Operator Test ===============================*/
+    Mystring all_upper1{ "SMIlE" };
+    
+    all_upper.display();
+    
+    std::cout << "Lower case of " << all_upper1 << " is " << -all_upper1 << std::endl;
+
+    Mystring all_lower1{ "smile" };
+
+    --all_lower1;
+
+    all_lower1.display();
+
+    -all_lower1;
+
+    all_lower1.display();
+
+    all_lower1--;
+
+    all_lower1.display();
+
+    /* ============================End of Overloaded Multiply Assignment(*) Operator Test =============================== */
 
 
 

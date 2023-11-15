@@ -36,6 +36,12 @@ class Mystring
 	// Overloading (++) operator
 	friend Mystring operator++(Mystring& obj, int n);								// concatenation operation on string
 
+	// Overloading(--) operator
+	friend Mystring& operator--(Mystring & obj);								// concatenation operation on string
+
+	// Overloading(--) operator
+	friend Mystring& operator--(Mystring& obj, int n);								// concatenation operation on string
+
 	// Overloading (<<) operator
 	friend std::ostream& operator<<(std::ostream& os, const Mystring& rhs);
 

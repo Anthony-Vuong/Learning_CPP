@@ -175,6 +175,23 @@ Mystring operator++(Mystring& obj, int n) {								//  lowercase operation on st
 	return temp;
 }
 
+// Overloading (--) operator
+Mystring& operator--(Mystring& obj) {								//  subtract a character off the end of the string
+	char* buff = new char[std::strlen(obj.str)];
+	std::strncpy(buff, obj.str, std::strlen(obj.str));
+	buff[std::strlen(obj.str)-1] = '\0';
+	obj.str = buff;
+	return obj;
+}
+
+
+// Overloading (--) operator
+Mystring& operator--(Mystring& obj, int n) {						//  subtract a character off the end of the string
+	Mystring temp{ obj };
+	--obj;
+	return temp;
+}
+
 // Overloading (<<) operator
 std::ostream& operator<<(std::ostream& os, const Mystring& rhs) {
 	os << rhs.str;
