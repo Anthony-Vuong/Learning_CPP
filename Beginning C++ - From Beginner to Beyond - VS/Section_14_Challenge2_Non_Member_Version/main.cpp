@@ -102,14 +102,14 @@ int main()
 
     /* ============================End of Overloaded Multiply(*) Operator Test ============================== = */
 
-     /* ================================== Overloaded Multiply Assignment(*) Operator Test ===============================*/
+     /* ================================== Overloaded Multiply Assignment(*=) Operator Test ===============================*/
     Mystring dog{ "Dog" };
 
     dog *= 7;          // Note: 5 * cat will not work - overloaded operator expects a Mystring object for lhs and an int as rhs
 
     dog.display();
 
-    /* ============================End of Overloaded Multiply Assignment(*) Operator Test ============================== = */
+    /* ============================End of Overloaded Multiply Assignment(*=) Operator Test ============================== = */
 
     /* ================================== Overloaded Post-Increment(++) Operator Test ===============================*/
     Mystring all_upper{ "SMILE" };
@@ -131,9 +131,9 @@ int main()
 
     all_lower.display();
 
-    /* ============================End of Overloaded Multiply Assignment(*) Operator Test ============================== = */
+    /* ============================End of Overloaded Multiply Assignment(++) Operator Test ============================== = */
 
-    /* ================================== Overloaded Post-Increment(++) Operator Test ===============================*/
+    /* ================================== Overloaded Post-Increment(--) Operator Test ===============================*/
     Mystring all_upper1{ "SMIlE" };
 
     all_upper.display();
@@ -154,7 +154,7 @@ int main()
 
     all_lower1.display();
 
-    /* ============================End of Overloaded Multiply Assignment(*) Operator Test ============================== = */
+    /* ============================End of Overloaded Multiply Assignment(-) Operator Test ============================== = */
 
 
 

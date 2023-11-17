@@ -10,6 +10,16 @@ Savings_Account::Savings_Account(std::string name, double amount, double int_rat
 
 }
 
+Savings_Account::Savings_Account(const Savings_Account& source)
+	: int_rate{source.int_rate} {
+
+}
+
+Savings_Account::Savings_Account(Savings_Account&& source)
+	:int_rate{ source.int_rate } {
+	source.int_rate = 0;
+}
+
 bool Savings_Account::deposit(double amount) {
 	amount += (amount * (int_rate / 100));
 	return Account::deposit(amount);

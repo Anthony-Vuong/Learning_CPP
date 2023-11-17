@@ -5,6 +5,16 @@ Checkings_Account::Checkings_Account(std::string name, double balance, double fl
 
 }
 
+Checkings_Account::Checkings_Account(const Checkings_Account& source)
+	:flat_fee{ source.flat_fee} {
+
+}
+
+Checkings_Account::Checkings_Account(Checkings_Account&& source)
+	:flat_fee{ source.flat_fee } {
+	source.flat_fee = 0;
+}
+
 bool Checkings_Account::deposit(double amount) {
 	return Account::deposit(amount);
 }

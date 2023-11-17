@@ -12,6 +12,10 @@ protected:
 	double int_rate;
 public:
 	Savings_Account(std::string name = default_name, double amount = default_balance, double int_rate = default_int_rate);
+	// Copy Constructor
+	Savings_Account(const Savings_Account& source);
+	// Move constructor
+	Savings_Account(Savings_Account&& source);
 	bool deposit(double amount);
 	// Withdraw is inherited from Account class, no need to re-implement
 
