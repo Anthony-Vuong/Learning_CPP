@@ -7,6 +7,8 @@ public:
         std::cout << "In Account::withdraw" << std::endl;
     }
 
+    virtual ~Account() { std::cout << "In Account::destructor" << std::endl; };
+
 };
 
 class Savings_Account : public Account {
@@ -14,7 +16,7 @@ public:
     virtual void withdraw(double amount) {
         std::cout << "In Savings_Account::withdraw" << std::endl;
     }
-
+    virtual ~Savings_Account() { std::cout << "In Savings_Account::destructor" << std::endl; };
 };
 
 class Checkings_Account : public Account {
@@ -23,6 +25,7 @@ public:
         std::cout << "In Checkings_Account::withdraw" << std::endl;
     }
 
+    virtual ~Checkings_Account() { std::cout << "In Checkings_Account::destructor" << std::endl; };
 };
 
 class Trust_Account : public Account {
@@ -30,6 +33,7 @@ public:
     virtual void withdraw(double amount) {
         std::cout << "In Trust_Account::withdraw" << std::endl;
     }
+    virtual ~Trust_Account() { std::cout << "In Trust_Account::destructor" << std::endl; };
 
 };
 
