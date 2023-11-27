@@ -35,22 +35,7 @@ bool Account::withdraw(double amount) {
 	return true;
 }
 
-double Account::get_balance() const {
-	return balance;
+void Account::print(std::ostream &os) const{
+
+    os << "Hello from Account";
 }
-
-void print(std::ostream &os){
-        os << name;
-
-}
-
-Account& Account::operator+=(double amount) {
-	deposit(amount);
-	return *this;
-}
-
-Account& Account::operator-=(double amount) {
-	withdraw(amount);
-	return *this;
-}
-

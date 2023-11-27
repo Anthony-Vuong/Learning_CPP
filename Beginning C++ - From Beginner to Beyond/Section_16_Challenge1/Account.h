@@ -18,12 +18,9 @@ public:
 	// Move constructor
 	Account(Account&& source);
     // Virtual destructor
-    virtual ~Account(){}
+    virtual ~Account() = default;
 	virtual bool deposit(double amount) = 0;
 	virtual bool withdraw(double amount) = 0;
-	double get_balance() const;
     virtual void print(std::ostream &os) const override;
-	Account& operator+=(double amount);
-	Account& operator-=(double amount);
 };
 

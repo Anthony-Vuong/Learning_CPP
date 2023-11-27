@@ -23,8 +23,8 @@ bool Checkings_Account::withdraw(double amount) {
 	return Account::withdraw(amount + flat_fee);
 }
 
+void Checkings_Account::print(std::ostream &os) const{
 
-std::ostream& operator<<(std::ostream& os, const Checkings_Account& account) {
-	os << "[Checkings Account " << account.name << ": " << account.balance << ", " << account.flat_fee << "]" << std::endl;
-	return os;
+	os << "[Checkings: " << name << " | " << balance << " | " << flat_fee << "]";
 }
+

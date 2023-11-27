@@ -43,7 +43,6 @@ int Trust_Account::check_valid_withdrawal(double amount) {
 	return 1;
 }
 
-std::ostream& operator<<(std::ostream &os, const Trust_Account &account) {
-	os << "[Trust Account " << account.name << ": " << account.balance << ", " << account.int_rate << "]" << std::endl;
-	return os;
+void Trust_Account::print(std::ostream &os) const{
+    os << "[Trust: " << name << " | " << balance << " | " << int_rate << " ]";
 }

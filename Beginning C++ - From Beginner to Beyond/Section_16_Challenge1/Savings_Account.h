@@ -3,7 +3,6 @@
 
 class Savings_Account : public Account
 {
-	friend std::ostream& operator<<(std::ostream &os, const Savings_Account &account);
 private:
 	static constexpr const char* default_name = "Unnamed Savings Account";
 	static constexpr double default_balance = 0.0;
@@ -17,9 +16,9 @@ public:
 	// Move constructor
 	Savings_Account(Savings_Account&& source);
     // Virtual destructor
-    virtual ~Savings_Account(){}
+    virtual ~Savings_Account() = default;
     virtual bool deposit(double amount) override;
-	// Withdraw is inherited from Account class, no need to override
-
+    virtual bool withdraw(double amount) override;
+    virtual void print(std::ostream &os) const override;
 };
 

@@ -19,10 +19,11 @@ public:
 	// Move constructor
 	Checkings_Account(Checkings_Account&& source);
 	// Virtual destructor
-    virtual ~Checkings_Account(){}
+    virtual ~Checkings_Account() = default;
     virtual bool deposit(double amount) override;
 	virtual bool withdraw(double amount) override;
-	//Checkings_Account& operator+=(double amount);
+	virtual void print(std::ostream &os) const override;
+    //Checkings_Account& operator+=(double amount);
 	//Checkings_Account& operator-=(double amount);
 	
 };
