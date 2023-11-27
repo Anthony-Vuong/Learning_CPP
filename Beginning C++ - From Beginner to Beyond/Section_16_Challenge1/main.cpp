@@ -29,7 +29,14 @@ int main()
 
     display(accounts);
 
+    deposit(accounts, 2000);
     
+    display(accounts);
+    
+    withdraw(accounts, 1500);
+    
+
+
     return 0;
 }
 
