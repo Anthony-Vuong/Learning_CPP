@@ -19,6 +19,8 @@ double calc_average(int miles, int gallons){
 double calc_average1(int miles, int gallons){
         if(gallons == 0)
             throw 0;
+        if(gallons < 0 || miles < 0)
+            throw std::string {"Error with gallons or miles < 0"};
         return static_cast<double>(miles) / gallons;
 
 }
@@ -76,6 +78,10 @@ int main(){
         mpg = calc_average1(miles, gallons);
     }catch(int &ex){
         std::cerr << "Divide by 0 ERROR" << std::endl;
+    }catch(std::string &ex){
+        std::cerr << ex << std::endl;
+    }catch(...){
+        std::cerr << "Unknown exception" << std::endl;
     }
     std::cout << std::setprecision(3) <<  "Your mpg is " << mpg << "\n" << std::endl;
 
