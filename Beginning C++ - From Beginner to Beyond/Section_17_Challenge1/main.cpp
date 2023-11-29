@@ -28,13 +28,39 @@ std::unique_ptr<std::vector<std::shared_ptr<Test>>> make(){
 
 
 }
-    
+
+
+void fill(std::vector<std::shared_ptr<Test>>vec_ptr, int num){
+
+    int temp{};
+
+    for(int i{0}; i < num; i++){
+        std::cout << "Enter an integer: ";
+        std::cin >> temp;
+        std::shared_ptr<Test>t = std::make_shared<Test>(temp);
+        vec_ptr.push_back(t);
+    }
+
+}
+
+
+
 int main(){
 
     
     std::unique_ptr<std::vector<std::shared_ptr<Test>>> vec_ptr;
 
     vec_ptr = make();
+
+    std::cout << "How many data points do you wanto to create?";
+
+    int num;
+
+    std::cin >> num;
+
+    fill(*vec_ptr, num);
+
+
 
     
     return 0;
