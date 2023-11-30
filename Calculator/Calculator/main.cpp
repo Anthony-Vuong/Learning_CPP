@@ -6,14 +6,7 @@
 int main() {
 
 	SimpleCalculator c;
-
-	std::string expression;
-
-	std::getline(std::cin, expression);
-
-	c.parse_expression(expression);
-
-	c.calculate();
+	c.run_calculator();
 
 	return 0;
 }

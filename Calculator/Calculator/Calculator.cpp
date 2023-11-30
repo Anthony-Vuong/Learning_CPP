@@ -5,51 +5,71 @@
 
 
 Calculator::Calculator() {
-	std::cout << "Constructor" << std::endl;
+	//std::cout << "Constructor" << std::endl;
 }
 Calculator::~Calculator() {
-	std::cout << "Destructor" << std::endl;
+	//std::cout << "Destructor" << std::endl;
 }
  
 void Calculator::parse_expression(std::string exp){
-	for (char c: exp) {
+	std::string temp{};
+	for (int i{ 0 }; i < exp.size(); i++) {
+		char c = exp.at(i);
 		if (c != ' ' && c >= 48 && c <= 57) {
-			operands.push_back(c - '0');
+			temp += c;
 		}
 		if (c != ' ' && (c == 42 || c == 120 || c == 43 || c == 45 || c == 47)) {
+			operands.push_back(stoi(temp));
 			operators.push_back(c);
+			temp.clear();
+		}
+		if (i == exp.size()-1) {
+			operands.push_back(stoi(temp));
 		}
 	}
 }
 
-void Calculator::calculate() {
+void Calculator::run_calculator() {
+	char input;
 
-	char temp_operand{};
+	std::cout << "Welcome to Calculator." << std::endl;
+	std::cout << "\tM/m - manual of accepted operators." << std::endl;
+	std::cout << "\tR/r - Run Calculator" << std::endl;
+	std::cout << "\tQ/q - Quit Calculator" << std::endl;
 
-	for (int i{ 0 }; i < operators.size(); i++) {
-		std::cout << operators.at(i) << std::endl;
-		temp_operand = operators.at(i);
-		switch (temp_operand) {
-			case '+': 
-				std::cout << "Add" << std::endl;
-				break;
-			case '-':
-				std::cout << "Subtract" << std::endl;
-				break;
-			case '/':
-				std::cout << "Divide" << std::endl;
-				break;
-			case '*':
-				std::cout << "Multiply" << std::endl;
-				break;
-			case 'x':
-				std::cout << "Multiply" << std::endl;
-				break;
-			default: 
-				std::cout << "Unknown" << std::endl;
+	
+	while (1) {
 
+		std::cout << "\n\nEnter choice: ";
+		std::cin >> input;
+
+		if (input == 'Q' || input == 'q') {
+			break;
 		}
+		else if (input == 'R' || input == 'r') {
+			while (1) {
+				std::string expression;
+
+				std::getline(std::cin, expression);
+
+				if (expression == "Q") {
+					std::cout << "\n\nReturning to main menu...\n\n";
+					break;
+				}
+				parse_expression(expression);
+
+				calculate();
+
+
+			}
+		}
+		else {
+			std::cout << "Unknown command" << std::endl;
+		}
+
 	}
+	
 }
+
 
 

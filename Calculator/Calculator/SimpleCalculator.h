@@ -6,11 +6,12 @@ class SimpleCalculator : public Calculator
 {
 public:
 
-	virtual void add(int op1, int op2) override;
-	virtual void subtraction(int op1, int op2) override;
-	virtual void multiply(int op1, int op2) override;
-	virtual void divide(int op1, int op2) override;
-
+	virtual int add(int op1, int op2) override;
+	virtual int subtract(int op1, int op2) override;
+	virtual int multiply(int op1, int op2) override;
+	virtual int divide(int op1, int op2) override;
+	virtual int remainder(int op1, int op2) override;
+	virtual void calculate() override;
 
 };
 
