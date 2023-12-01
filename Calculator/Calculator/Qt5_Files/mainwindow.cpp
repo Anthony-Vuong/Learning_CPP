@@ -1,11 +1,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <iostream>
 #include <string>
 #include <QTextEdit>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGridLayout>
 #include <QPushButton>
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -22,6 +24,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::init_ui(){
 
+
+
     // Change window size to 400, 300
     setFixedSize(400, 300);
     // Rename the window to Calculator
@@ -34,6 +38,7 @@ void MainWindow::init_ui(){
     screen = new QTextEdit();
     screen->setMaximumSize(395, 150);
     QHBoxLayout *screen_layout = new QHBoxLayout();
+    screen->setFontPointSize(14);
     screen_layout->addWidget(screen);
 
     // Push Buttons for digits
@@ -210,9 +215,17 @@ void MainWindow::QPushButton_Divide_Handle(){
 
 void MainWindow::QPushButton_Equate_Handle(){
     QString t{};
+    QString result{};
+    strList = screen->toPlainText().split("\n");
     t = screen->toPlainText();
-    t = t + '=';
+    //t = t + '=';
+
+    s.parse_expression(strList.last());
+
+    result = s.calculate();
+    t = t + "\n     =" + result + "\n";
     screen->setPlainText(t);
+
 }
 
 

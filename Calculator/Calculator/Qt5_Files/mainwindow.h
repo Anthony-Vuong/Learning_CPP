@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QPushButton>
 #include <QTextEdit>
+#include "SimpleCalculator.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -57,5 +58,9 @@ private:
     QPushButton *QPushButton_Multiply;
     QPushButton *QPushButton_Divide;
     QPushButton *QPushButton_Equate;
+
+    QStringList strList;
+
+    SimpleCalculator s;
 };
 #endif // MAINWINDOW_H
