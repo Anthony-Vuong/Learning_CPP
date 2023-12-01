@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <string>
 #include <QTextEdit>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -30,22 +31,22 @@ void MainWindow::init_ui(){
     QVBoxLayout *mainlayout = new QVBoxLayout();
 
     // TextEdit window for - expressions
-    QTextEdit *t = new QTextEdit();
-    t->setMaximumSize(395, 150);
+    screen = new QTextEdit();
+    screen->setMaximumSize(395, 150);
     QHBoxLayout *screen_layout = new QHBoxLayout();
-    screen_layout->addWidget(t);
+    screen_layout->addWidget(screen);
 
     // Push Buttons for digits
-    QPushButton *QPushButton_0 = new QPushButton("0");
-    QPushButton *QPushButton_1 = new QPushButton("1");
-    QPushButton *QPushButton_2 = new QPushButton("2");
-    QPushButton *QPushButton_3 = new QPushButton("3");
-    QPushButton *QPushButton_4 = new QPushButton("4");
-    QPushButton *QPushButton_5 = new QPushButton("5");
-    QPushButton *QPushButton_6 = new QPushButton("6");
-    QPushButton *QPushButton_7 = new QPushButton("7");
-    QPushButton *QPushButton_8 = new QPushButton("8");
-    QPushButton *QPushButton_9 = new QPushButton("9");
+    QPushButton_0 = new QPushButton("0", this);
+    QPushButton_1 = new QPushButton("1");
+    QPushButton_2 = new QPushButton("2");
+    QPushButton_3 = new QPushButton("3");
+    QPushButton_4 = new QPushButton("4");
+    QPushButton_5 = new QPushButton("5");
+    QPushButton_6 = new QPushButton("6");
+    QPushButton_7 = new QPushButton("7");
+    QPushButton_8 = new QPushButton("8");
+    QPushButton_9 = new QPushButton("9");
 
     // Layout Digit Buttons 2x5
     QGridLayout *digits_layout = new QGridLayout();
@@ -61,13 +62,25 @@ void MainWindow::init_ui(){
     digits_layout->addWidget(QPushButton_8, 1, 3);
     digits_layout->addWidget(QPushButton_9, 1, 4);
 
+    // Add QtSignal Button Presses for Digit Buttons
+    connect(QPushButton_0, &QPushButton::clicked, this, &MainWindow::QPushButton_0_Handle);
+    connect(QPushButton_1, &QPushButton::clicked, this, &MainWindow::QPushButton_1_Handle);
+    connect(QPushButton_2, &QPushButton::clicked, this, &MainWindow::QPushButton_2_Handle);
+    connect(QPushButton_3, &QPushButton::clicked, this, &MainWindow::QPushButton_3_Handle);
+    connect(QPushButton_4, &QPushButton::clicked, this, &MainWindow::QPushButton_4_Handle);
+    connect(QPushButton_5, &QPushButton::clicked, this, &MainWindow::QPushButton_5_Handle);
+    connect(QPushButton_6, &QPushButton::clicked, this, &MainWindow::QPushButton_6_Handle);
+    connect(QPushButton_7, &QPushButton::clicked, this, &MainWindow::QPushButton_7_Handle);
+    connect(QPushButton_8, &QPushButton::clicked, this, &MainWindow::QPushButton_8_Handle);
+    connect(QPushButton_9, &QPushButton::clicked, this, &MainWindow::QPushButton_9_Handle);
+
 
     // Push Buttons for Operators
-    QPushButton *QPushButton_Add = new QPushButton("+");
-    QPushButton *QPushButton_Subtract = new QPushButton("-");
-    QPushButton *QPushButton_Multiply = new QPushButton("*");
-    QPushButton *QPushButton_Divide = new QPushButton("/");
-    QPushButton *QPushButton_Equate = new QPushButton("=");
+    QPushButton_Add = new QPushButton("+");
+    QPushButton_Subtract = new QPushButton("-");
+    QPushButton_Multiply = new QPushButton("*");
+    QPushButton_Divide = new QPushButton("/");
+    QPushButton_Equate = new QPushButton("=");
 
     QGridLayout *operators_layout = new QGridLayout();
 
@@ -76,6 +89,12 @@ void MainWindow::init_ui(){
     operators_layout->addWidget(QPushButton_Multiply, 1, 0);
     operators_layout->addWidget(QPushButton_Divide, 1, 2);
     operators_layout->addWidget(QPushButton_Equate, 1, 1);
+
+    connect(QPushButton_Add, &QPushButton::clicked, this, &MainWindow::QPushButton_Add_Handle);
+    connect(QPushButton_Subtract, &QPushButton::clicked, this, &MainWindow::QPushButton_Subtract_Handle);
+    connect(QPushButton_Multiply, &QPushButton::clicked, this, &MainWindow::QPushButton_Multiply_Handle);
+    connect(QPushButton_Divide, &QPushButton::clicked, this, &MainWindow::QPushButton_Divide_Handle);
+    connect(QPushButton_Equate, &QPushButton::clicked, this, &MainWindow::QPushButton_Equate_Handle);
 
 
     // Create a new main widget to hold layouts
@@ -90,4 +109,111 @@ void MainWindow::init_ui(){
     setCentralWidget(qt_widget);
 
 }
+
+void MainWindow::QPushButton_0_Handle(){
+    QString t{};
+    t = screen->toPlainText();
+    t = t + '0';
+    screen->setPlainText(t);
+}
+
+void MainWindow::QPushButton_1_Handle(){
+    QString t{};
+    t = screen->toPlainText();
+    t = t + '1';
+    screen->setPlainText(t);
+}
+
+void MainWindow::QPushButton_2_Handle(){
+    QString t{};
+    t = screen->toPlainText();
+    t = t + '2';
+    screen->setPlainText(t);
+}
+
+void MainWindow::QPushButton_3_Handle(){
+    QString t{};
+    t = screen->toPlainText();
+    t = t + '3';
+    screen->setPlainText(t);
+}
+
+void MainWindow::QPushButton_4_Handle(){
+    QString t{};
+    t = screen->toPlainText();
+    t = t + '4';
+    screen->setPlainText(t);
+}
+
+void MainWindow::QPushButton_5_Handle(){
+    QString t{};
+    t = screen->toPlainText();
+    t = t + '5';
+    screen->setPlainText(t);
+}
+
+void MainWindow::QPushButton_6_Handle(){
+    QString t{};
+    t = screen->toPlainText();
+    t = t + '6';
+    screen->setPlainText(t);
+}
+
+void MainWindow::QPushButton_7_Handle(){
+    QString t{};
+    t = screen->toPlainText();
+    t = t + '7';
+    screen->setPlainText(t);
+}
+
+void MainWindow::QPushButton_8_Handle(){
+    QString t{};
+    t = screen->toPlainText();
+    t = t + '8';
+    screen->setPlainText(t);
+}
+
+void MainWindow::QPushButton_9_Handle(){
+    QString t{};
+    t = screen->toPlainText();
+    t = t + '9';
+    screen->setPlainText(t);
+}
+
+void MainWindow::QPushButton_Add_Handle(){
+    QString t{};
+    t = screen->toPlainText();
+    t = t + '+';
+    screen->setPlainText(t);
+}
+
+void MainWindow::QPushButton_Subtract_Handle(){
+    QString t{};
+    t = screen->toPlainText();
+    t = t + '-';
+    screen->setPlainText(t);
+}
+
+void MainWindow::QPushButton_Multiply_Handle(){
+    QString t{};
+    t = screen->toPlainText();
+    t = t + '*';
+    screen->setPlainText(t);
+}
+
+void MainWindow::QPushButton_Divide_Handle(){
+    QString t{};
+    t = screen->toPlainText();
+    t = t + '/';
+    screen->setPlainText(t);
+}
+
+void MainWindow::QPushButton_Equate_Handle(){
+    QString t{};
+    t = screen->toPlainText();
+    t = t + '=';
+    screen->setPlainText(t);
+}
+
+
 
