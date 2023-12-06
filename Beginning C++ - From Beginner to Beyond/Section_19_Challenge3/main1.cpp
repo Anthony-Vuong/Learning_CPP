@@ -5,27 +5,36 @@
 #include <vector>
 #include <cstring>
 
-void found_words(std::string str, std::string key, int& found){
+void num_found_words(std::string str, std::string key, int& found, int &num_words){
     std::string temp_word;
-    int i{0};
+    int i{0}, word_flag{0};
     char c;
-    while(i < str.length()){
-        if(temp_word.find(key) != std::string::npos){
-//            std::cout << "check" << std::endl;
-            found++;
+    
+    do{    
+        c = str.at(i);
+        if(isalpha(c) && word_flag == 0){
+            word_flag = 1;
+            temp_word += tolower(c);
+        }
+        else if(isalpha(c) && word_flag ==1){
+            temp_word += tolower(c);
+        }
+        else if(isspace(c) && word_flag == 1){
+            if(temp_word.find(key) != std::string::npos){
+                found++;
+            }
+            word_flag = 0;
+            num_words++;
             temp_word.clear();
         }
-        else{
-            c = str.at(i);
-            if(!std::isspace(c) && c != '\n'){
-                temp_word += tolower(c);
-            }
-        }
-        i++;   
-    }
+        i++;    
+    }while(i < str.length());
 
-    if(temp_word.find(key) != std::string::npos){
-        found++;
+    if(!str.empty()){
+        if(temp_word.find(key) != std::string::npos){
+            found++;
+        }
+        num_words++;
     }
     
 }
@@ -39,10 +48,10 @@ void str_lower(std::string &s){
 int main(){
 
     std::string line, key;
-    int num_words{0};
+    int num_words{0}, found_words{0};
     std::ifstream infile;
 
-    infile.open("Romeo_and_Juliet.txt");
+    infile.open("romeoandjuliet.txt");
 
     // Check if the file can be opened, if not, error out
     if(!infile){
@@ -57,13 +66,14 @@ int main(){
     str_lower(key);
 
     while(std::getline(infile, line)){
-
-        found_words(line, key, num_words);
-
+        if(!line.empty())
+            num_found_words(line, key, found_words, num_words);
     }
 
 
-    std::cout << num_words << std::endl;
+    std::cout << num_words<< " words were searched..." << std::endl;
+
+    std::cout << "The substring " << key << " was found " << found_words << " times" << std::endl;
     // Close the file
     infile.close();
     return 0;
