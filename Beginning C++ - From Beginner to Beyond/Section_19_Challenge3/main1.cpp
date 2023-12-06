@@ -23,6 +23,7 @@ void num_found_words(std::string str, std::string key, int& found, int &num_word
             if(temp_word.find(key) != std::string::npos){
                 found++;
             }
+            std::cout << "Temp: " << temp_word << std::endl;
             word_flag = 0;
             num_words++;
             temp_word.clear();
@@ -51,7 +52,7 @@ int main(){
     int num_words{0}, found_words{0};
     std::ifstream infile;
 
-    infile.open("romeoandjuliet.txt");
+    infile.open("test.txt");
 
     // Check if the file can be opened, if not, error out
     if(!infile){
