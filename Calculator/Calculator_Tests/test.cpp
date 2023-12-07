@@ -5,6 +5,50 @@
 #include "../Calculator/Calculator.h"
 #include "../Calculator/Calculator.cpp"
 
+
+/* Test fixture for simple calculator 
+ *
+ * Please see http://google.github.io/googletest/primer.html for more details
+ * 
+*/
+
+namespace my 
+{
+    namespace project 
+    {
+        namespace 
+        {
+            class Calculator_Arithmetic_Tests : public testing::Test
+            {
+                protected:
+                    // Constructor - setup happens in here
+                    Calculator_Arithmetic_Tests()
+                    {
+
+                    }
+                        
+                    // Destructor - teardown happens here
+                    ~Calculator_Arithmetic_Tests override()
+                    {
+
+                    }
+                            
+                    // SetUp can be overriden - this method will be called after constructor, before each test
+                    void SetUp() override
+                    {
+
+                    }
+                                
+                    // TearDown can be overriden - this method is called after destructor, after each test
+                    void TearDown() override
+                    {
+                                
+                    }   
+            }       
+        }
+    }
+}
+
 TEST(TestCase1, TestName) {
 
 	SimpleCalculator s;
