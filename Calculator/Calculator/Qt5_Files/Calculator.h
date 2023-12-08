@@ -22,6 +22,7 @@ public:
     virtual QString calculate() = 0;
     void parse_expression(QString exp);
 	void run_calculator();
+
 	
 
 };

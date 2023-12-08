@@ -38,6 +38,10 @@ public:
     void QPushButton_Divide_Handle();
     void QPushButton_Equate_Handle();
 
+    void format_screen(QStringList t, QString result);
+    void handle_digit_buttons();
+
+
 
 private:
     Ui::MainWindow *ui;

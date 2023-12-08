@@ -7,6 +7,7 @@
 #include <QHBoxLayout>
 #include <QGridLayout>
 #include <QPushButton>
+#include <QDebug>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -36,9 +37,10 @@ void MainWindow::init_ui(){
 
     // TextEdit window for - expressions
     screen = new QTextEdit();
-    screen->setMaximumSize(395, 150);
+    screen->setCursorWidth(10);
+    screen->setMaximumSize(395, 250);
     QHBoxLayout *screen_layout = new QHBoxLayout();
-    screen->setFontPointSize(14);
+    screen->setFontPointSize(16);
     screen_layout->addWidget(screen);
 
     // Push Buttons for digits
@@ -68,16 +70,18 @@ void MainWindow::init_ui(){
     digits_layout->addWidget(QPushButton_9, 1, 4);
 
     // Add QtSignal Button Presses for Digit Buttons
-    connect(QPushButton_0, &QPushButton::clicked, this, &MainWindow::QPushButton_0_Handle);
-    connect(QPushButton_1, &QPushButton::clicked, this, &MainWindow::QPushButton_1_Handle);
-    connect(QPushButton_2, &QPushButton::clicked, this, &MainWindow::QPushButton_2_Handle);
-    connect(QPushButton_3, &QPushButton::clicked, this, &MainWindow::QPushButton_3_Handle);
-    connect(QPushButton_4, &QPushButton::clicked, this, &MainWindow::QPushButton_4_Handle);
-    connect(QPushButton_5, &QPushButton::clicked, this, &MainWindow::QPushButton_5_Handle);
-    connect(QPushButton_6, &QPushButton::clicked, this, &MainWindow::QPushButton_6_Handle);
-    connect(QPushButton_7, &QPushButton::clicked, this, &MainWindow::QPushButton_7_Handle);
-    connect(QPushButton_8, &QPushButton::clicked, this, &MainWindow::QPushButton_8_Handle);
-    connect(QPushButton_9, &QPushButton::clicked, this, &MainWindow::QPushButton_9_Handle);
+    //connect(QPushButton_0, &QPushButton::clicked, this, &MainWindow::QPushButton_0_Handle);
+
+    connect(QPushButton_0, &QPushButton::clicked, this, &MainWindow::handle_digit_buttons);
+    connect(QPushButton_1, &QPushButton::clicked, this, &MainWindow::handle_digit_buttons);
+    connect(QPushButton_2, &QPushButton::clicked, this, &MainWindow::handle_digit_buttons);
+    connect(QPushButton_3, &QPushButton::clicked, this, &MainWindow::handle_digit_buttons);
+    connect(QPushButton_4, &QPushButton::clicked, this, &MainWindow::handle_digit_buttons);
+    connect(QPushButton_5, &QPushButton::clicked, this, &MainWindow::handle_digit_buttons);
+    connect(QPushButton_6, &QPushButton::clicked, this, &MainWindow::handle_digit_buttons);
+    connect(QPushButton_7, &QPushButton::clicked, this, &MainWindow::handle_digit_buttons);
+    connect(QPushButton_8, &QPushButton::clicked, this, &MainWindow::handle_digit_buttons);
+    connect(QPushButton_9, &QPushButton::clicked, this, &MainWindow::handle_digit_buttons);
 
 
     // Push Buttons for Operators
@@ -115,75 +119,102 @@ void MainWindow::init_ui(){
 
 }
 
-void MainWindow::QPushButton_0_Handle(){
+void MainWindow::handle_digit_buttons(){
+
+    QObject* button_id = sender();
     QString t{};
+
+    screen->setFocus();
+    screen->moveCursor(QTextCursor::Start);
     t = screen->toPlainText();
-    t = t + '0';
+    if(button_id == QPushButton_0){
+        t = t + '0';
+    }
+    else if(button_id == QPushButton_1){
+        t = t + '1';
+    }
+    else if(button_id == QPushButton_2){
+        t = t + '2';
+    }
+    else if(button_id == QPushButton_3){
+        t = t + '3';
+    }
+    else if(button_id == QPushButton_4){
+        t = t + '4';
+    }
+    else if(button_id == QPushButton_5){
+        t = t + '5';
+    }
+    else if(button_id == QPushButton_6){
+        t = t + '6';
+    }
+    else if(button_id == QPushButton_7){
+        t = t + '7';
+    }
+    else if(button_id == QPushButton_8){
+        t = t + '8';
+    }
+    else if(button_id == QPushButton_9){
+        t = t + '9';
+    }
+    screen->setPlainText(t);
+    for(int i{0}; i<50; i++)
+        screen->moveCursor(QTextCursor::Right);
+
+
+}
+
+void MainWindow::format_screen(QStringList strList, QString result){
+
+    QString t;
+
+    if(strList.length() > 6){
+        strList.removeAt(0);
+        strList.removeAt(0);
+        for(int i{0}; i<strList.length(); i++){
+            if(i % 2 == 0){
+                t = t + strList.at(i);
+            }
+            else{
+                t = t + "\n" + strList.at(i) + "\n";
+            }
+            //t = t + strList.at(i) + "\n";
+        }
+    }
+    else if(strList.length() == 1){
+        t = t + strList.at(0); // + "\n     =" + result + "\n";
+    }
+    else{
+        for(int i{0}; i<strList.length(); i++){
+            if(i % 2 == 0){
+                t = t + strList.at(i);
+            }
+            else{
+                t = t + "\n" + strList.at(i) + "\n";
+            }
+        }
+    }
+
+    t = t + "\n     =" + result + "\n";
+
     screen->setPlainText(t);
 }
 
-void MainWindow::QPushButton_1_Handle(){
-    QString t{};
-    t = screen->toPlainText();
-    t = t + '1';
-    screen->setPlainText(t);
+void MainWindow::QPushButton_Equate_Handle(){
+    QString result{};
+    strList = screen->toPlainText().split("\n");
+
+    //
+    s.parse_expression(strList.last());
+
+    //
+    result = s.calculate();
+
+    //
+    format_screen(strList, result);
+
 }
 
-void MainWindow::QPushButton_2_Handle(){
-    QString t{};
-    t = screen->toPlainText();
-    t = t + '2';
-    screen->setPlainText(t);
-}
-
-void MainWindow::QPushButton_3_Handle(){
-    QString t{};
-    t = screen->toPlainText();
-    t = t + '3';
-    screen->setPlainText(t);
-}
-
-void MainWindow::QPushButton_4_Handle(){
-    QString t{};
-    t = screen->toPlainText();
-    t = t + '4';
-    screen->setPlainText(t);
-}
-
-void MainWindow::QPushButton_5_Handle(){
-    QString t{};
-    t = screen->toPlainText();
-    t = t + '5';
-    screen->setPlainText(t);
-}
-
-void MainWindow::QPushButton_6_Handle(){
-    QString t{};
-    t = screen->toPlainText();
-    t = t + '6';
-    screen->setPlainText(t);
-}
-
-void MainWindow::QPushButton_7_Handle(){
-    QString t{};
-    t = screen->toPlainText();
-    t = t + '7';
-    screen->setPlainText(t);
-}
-
-void MainWindow::QPushButton_8_Handle(){
-    QString t{};
-    t = screen->toPlainText();
-    t = t + '8';
-    screen->setPlainText(t);
-}
-
-void MainWindow::QPushButton_9_Handle(){
-    QString t{};
-    t = screen->toPlainText();
-    t = t + '9';
-    screen->setPlainText(t);
-}
 
 void MainWindow::QPushButton_Add_Handle(){
     QString t{};
@@ -213,20 +244,7 @@ void MainWindow::QPushButton_Divide_Handle(){
     screen->setPlainText(t);
 }
 
-void MainWindow::QPushButton_Equate_Handle(){
-    QString t{};
-    QString result{};
-    strList = screen->toPlainText().split("\n");
-    t = screen->toPlainText();
-    //t = t + '=';
 
-    s.parse_expression(strList.last());
-
-    result = s.calculate();
-    t = t + "\n     =" + result + "\n";
-    screen->setPlainText(t);
-
-}
 
 
 

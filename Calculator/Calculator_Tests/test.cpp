@@ -1,16 +1,21 @@
-//#include "pch.h"
-//#include "gtest/gtest.h"
-//#include "C:\Users\antho\Learning_CPP\Calculator\Calculator\SimpleCalculator.cpp" 
-//#include "../Calculator/SimpleCalculator.h"
-//#include "../Calculator/SimpleCalculator.cpp"
-//#include "../Calculator/Calculator.h"
-//#include "../Calculator/Calculator.cpp"
 
+#include "pch.h"
+#include "C:\Users\antho\Learning_CPP\Calculator\Calculator\SimpleCalculator.cpp" 
+#include "../Calculator/SimpleCalculator.h"
+#include "../Calculator/SimpleCalculator.cpp"
+#include "../Calculator/Calculator.h"
+#include "../Calculator/Calculator.cpp"
+
+
+/*
 #include "gtest/gtest.h"
 #include "SimpleCalculator.h"
 #include "SimpleCalculator.cpp"
 #include "Calculator.h"
 #include "Calculator.cpp"
+*/
+
+
 /* Test fixture for simple calculator 
  *
  * Please see http://google.github.io/googletest/primer.html for more details
