@@ -1,0 +1,27 @@
+In order to get GTest to work you can follow this tutorial:
+
+https://www.eriksmistad.no/getting-started-with-google-test-on-ubuntu/
+
+
+*Note: An issue occurred where compiling test resulted in MakeErrors when finding Thread Library.
+Please see the following post on how to fix it:
+
+https://stackoverflow.com/questions/5395309/how-do-i-force-cmake-to-include-pthread-option-during-compilation
+
+Follow the first tutorial to install and the second to fix the Thread Library Issue. In addition, you need
+to include your source/header files you want to test in the file that includes your text fixture and test 
+main() method.
+
+For a tutorial on how to setup GTestFixtures follow this tutorial:
+http://google.github.io/googletest/primer.html
+
+
+Once TestFixture is setup, TestCases can be setup, ensure you name each test something descriptive.
+
+On the command line, to build with cmake do the following:
+
+cmake CMakeList.txt
+make
+./name_of_executable
+
+The above assumes you have followed the first tutorial.
