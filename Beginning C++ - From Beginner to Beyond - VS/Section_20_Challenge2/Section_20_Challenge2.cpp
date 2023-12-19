@@ -2,6 +2,8 @@
 #include <list>
 #include <iomanip>
 #include <iterator>
+#include <string>
+#include <sstream>
 #include "Song.h"
 
 template<typename T>
@@ -13,7 +15,6 @@ void display(const std::list<T>&songs) {
     std::cout << std::endl;
 
 }
-
 
 void display_options() {
 
@@ -70,8 +71,13 @@ int main()
     std::cout << "Current song: " << std::endl;
     std::cout << playlist.front() << std::endl;
 
-    auto playlist_iterator = playlist.begin();
-    
+    Song current_song = s1;
+
+    auto it = std::find(playlist.begin(), playlist.end(), current_song);
+    auto rev_it = std::prev(playlist.end());
+
+    std::cout << *rev_it << std::endl;
+
     while (1) {
         display_options();
         std::cin >> user_input;
@@ -81,17 +87,46 @@ int main()
             break;
         }
         else if (user_input == 'F' or user_input == 'f') {
-            std::cout << "Playing first song:" << std::endl;
+            std::cout << "Playing first song:" << current_song << std::endl;
         }
         else if (user_input == 'N' or user_input == 'n') {
-            std::advance(playlist_iterator, 1);
-            std::cout << "Playing next song: " << *playlist_iterator << std::endl;
+            std::advance(it, 1);
+            current_song = *it;
+            rev_it = it;
+            std::cout << "Playing next song: " << current_song << std::endl;
         }
         else if (user_input == 'P' or user_input == 'p') {
-            std::cout << "Playing previous song: "  << std::endl;
+            rev_it--;
+            current_song = *rev_it;
+            it = rev_it;
+            std::cout << "Playing previous song: " << current_song  << std::endl;
         }
         else if (user_input == 'A' or user_input == 'a') {
-            std::cout << "Adding new song" << std::endl;
+            std::string temp_name;
+            std::string temp_artist;
+            std::string entry;
+            int rating;
+            std::cout << "Add a new song\n" << std::endl;
+            std::cout << std::setw(45) << std::setfill('=') << std::right << "=" << std::endl;
+            std::cout << "Enter name of song: ";
+            std::cin.ignore();
+            std::getline(std::cin, temp_name);
+
+            std::cout << "Enter song's artist name: ";
+            std::getline(std::cin, temp_artist);
+
+            std::cout << "Enter your rating of the song: ";
+            std::cin >> entry;
+            std::istringstream validator{ entry };
+            if (validator >> rating) {
+                Song temp{ temp_name, temp_artist, rating };
+                playlist.push_back(temp);
+                std::cout << temp_name << " was added to the playlist.\n" << std::endl;
+            }
+            else {
+                std::cout << "Sorry, that's not an integer" << std::endl;
+            }
+     
         }
         else if (user_input == 'L' or user_input == 'l') {
             display(playlist);

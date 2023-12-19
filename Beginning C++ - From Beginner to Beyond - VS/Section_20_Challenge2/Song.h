@@ -19,8 +19,8 @@ public:
 	std::string get_name() const;
 	std::string get_artist() const;
 	int get_rating() const;
-	bool operator<(const Song* s1) const;
-	bool operator==(const Song* s1) const;
+	bool operator<(const Song& s1) const;
+	bool operator==(const Song& s1) const;
 
 
 };

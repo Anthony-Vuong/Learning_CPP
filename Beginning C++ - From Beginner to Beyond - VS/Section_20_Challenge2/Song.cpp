@@ -1,4 +1,5 @@
 #include "Song.h"
+#include <string>
 
 std::string Song::get_name() const {
 	return name;
@@ -12,12 +13,12 @@ int Song::get_rating() const {
 	return rating;
 }
 
-bool Song::operator<(const Song* s1) const {
-	return this->name < s1->name;
+bool Song::operator<(const Song& s1) const {
+	return this->name < s1.name;
 }
 
-bool Song::operator==(const Song* s1) const {
-	return this->name == s1->name;
+bool Song::operator==(const Song& s1) const {
+	return name == s1.name;
 }
 
 std::ostream& operator<<(std::ostream &os, const Song &s) {
