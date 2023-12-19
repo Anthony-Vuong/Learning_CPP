@@ -19,3 +19,10 @@ bool Song::operator<(const Song* s1) const {
 bool Song::operator==(const Song* s1) const {
 	return this->name == s1->name;
 }
+
+std::ostream& operator<<(std::ostream &os, const Song &s) {
+
+	os << s.get_name() << " " << s.get_artist() << " " << s.get_rating() << std::endl;
+
+	return os;
+}

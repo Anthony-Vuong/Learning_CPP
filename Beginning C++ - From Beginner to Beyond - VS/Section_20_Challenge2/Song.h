@@ -22,5 +22,6 @@ public:
 	bool operator<(const Song* s1) const;
 	bool operator==(const Song* s1) const;
 
+
 };
 
