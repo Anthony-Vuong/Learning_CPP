@@ -1,5 +1,4 @@
 #include "Song.h"
-#include <string>
 
 std::string Song::get_name() const {
 	return name;
